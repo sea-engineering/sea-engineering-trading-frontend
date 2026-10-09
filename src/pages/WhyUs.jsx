@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { API_URL, getStorageUrl } from '../config/api';
 import Swiper from 'swiper';
 import { Navigation, Controller, EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -32,7 +33,7 @@ const WhyUs = () => {
   const advTextSwiperRef = useRef(null);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/pages/why-us/data`)
+    axios.get(`${API_URL}/pages/why-us/data`)
       .then(response => {
         setData(prev => ({
           ...prev,
@@ -146,7 +147,7 @@ const WhyUs = () => {
                       </div>
                     </div>
                   </div>
-                  <img src={`http://localhost:8000/storage/${banner.image_path}`} className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" style={{ objectPosition: 'top' }} alt="Banner" />
+                  <img src={getStorageUrl(banner.image_path)} className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" style={{ objectPosition: 'top' }} alt="Banner" />
                 </div>
               ))}
             </div>
@@ -190,7 +191,7 @@ const WhyUs = () => {
                       {card.icon_path && (
                         <div className="mb-3 d-block mx-auto align-self-center" style={{ width: '40px', height: '40px', overflow: 'hidden' }}>
                           <img 
-                            src={`http://localhost:8000/storage/${card.icon_path}`}
+                            src={getStorageUrl(card.icon_path)}
                             alt="Icon" 
                             style={{ 
                               height: '100%', 
@@ -241,7 +242,7 @@ const WhyUs = () => {
                     <div key={adv.id} className="swiper-slide h-100">
                       {adv.image_path && (
                         <img 
-                          src={`http://localhost:8000/storage/${adv.image_path}`} 
+                          src={getStorageUrl(adv.image_path)} 
                           className="w-100 h-100 object-fit-cover" 
                           style={{ objectPosition: 'left center' }}
                           alt={i18n.language === 'fr' ? adv.title_fr : adv.title_en} 

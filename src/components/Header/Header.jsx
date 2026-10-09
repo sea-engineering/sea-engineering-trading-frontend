@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ADMIN_LOGIN_URL } from '../../config/api';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -100,7 +101,7 @@ const Header = () => {
           {/* User Account (Admin Login) */}
           <a
             className="btn btn-icon btn-lg fs-lg btn-outline-secondary border-0 rounded-circle animate-shake text-white"
-            href="http://localhost:8000/login"
+            href={ADMIN_LOGIN_URL}
             title="Admin Login"
           >
             <i className="ci-user animate-target"></i>

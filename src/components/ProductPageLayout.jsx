@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { API_URL, getStorageUrl } from '../config/api';
 import Swiper from 'swiper';
 import { Navigation, Controller, EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -28,7 +29,7 @@ const ProductPageLayout = ({ pageKey, fallbackGlobalTitleEn, fallbackGlobalTitle
   const announceTextSwiperRef = useRef(null);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/pages/${pageKey}/data`)
+    axios.get(`${API_URL}/pages/${pageKey}/data`)
       .then(response => {
         setData({
           banners: response.data.banners || [],
@@ -137,7 +138,7 @@ const ProductPageLayout = ({ pageKey, fallbackGlobalTitleEn, fallbackGlobalTitle
           <div className="swiper-wrapper">
             {data.banners.map((banner) => (
               <div key={banner.id} className="swiper-slide position-relative" style={{ backgroundColor: '#6dafca' }}>
-                <img src={`http://localhost:8000/storage/${banner.image_path}`} className="w-100 h-auto rtl-flip" alt="Banner" />
+                <img src={getStorageUrl(banner.image_path)} className="w-100 h-auto rtl-flip" alt="Banner" />
                 <div className="position-absolute top-0 start-0 d-flex align-items-center w-100 h-100 z-2">
                   <div className="container mt-lg-n4">
                     <div className="row">
@@ -182,7 +183,7 @@ const ProductPageLayout = ({ pageKey, fallbackGlobalTitleEn, fallbackGlobalTitle
                       {article.image_path && (
                         <div className="ratio d-flex hover-effect-scale rounded overflow-hidden" style={{ '--cz-aspect-ratio': 'calc(306 / 416 * 100%)' }}>
                           <img
-                            src={`http://localhost:8000/storage/${article.image_path}`}
+                            src={getStorageUrl(article.image_path)}
                             className="hover-effect-target object-fit-cover w-100"
                             alt={i18n.language === 'fr' ? article.title_fr : article.title_en}
                           />
@@ -248,7 +249,7 @@ const ProductPageLayout = ({ pageKey, fallbackGlobalTitleEn, fallbackGlobalTitle
                 {data.announces.map((announce) => (
                   <div key={announce.id} className="swiper-slide">
                     {announce.image_path && (
-                      <img src={`http://localhost:8000/storage/${announce.image_path}`} className="w-100 h-auto" alt="Image" />
+                      <img src={getStorageUrl(announce.image_path)} className="w-100 h-auto" alt="Image" />
                     )}
                   </div>
                 ))}

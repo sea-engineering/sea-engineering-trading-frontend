@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { API_URL, getStorageUrl } from '../config/api';
 import Swiper from 'swiper';
 import { Navigation, Controller, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -25,7 +26,7 @@ const About = () => {
 
   // Fetch data
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/pages/about/data`)
+    axios.get(`${API_URL}/pages/about/data`)
       .then(response => {
         setData({
           page_adv_title_en:    response.data.page_adv_title_en    || '',
@@ -111,7 +112,7 @@ const About = () => {
                     <div key={adv.id} className="swiper-slide h-100">
                       {adv.image_path && (
                         <img
-                          src={`http://localhost:8000/storage/${adv.image_path}`}
+                          src={getStorageUrl(adv.image_path)}
                           className="w-100 h-100 object-fit-cover"
                           style={{ objectPosition: 'left center' }}
                           alt={i18n.language === 'fr' ? adv.title_fr : adv.title_en}
@@ -170,7 +171,7 @@ const About = () => {
                       {card.icon_path && (
                         <div className="mb-3 d-block mx-auto" style={{ width: '40px', height: '40px', overflow: 'hidden' }}>
                           <img
-                            src={`http://localhost:8000/storage/${card.icon_path}`}
+                            src={getStorageUrl(card.icon_path)}
                             alt="Icon"
                             style={{
                               height: '100%',

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { API_URL, getStorageUrl } from '../config/api';
 import Swiper from 'swiper';
 import { Navigation, Controller, EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -75,7 +76,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch active banners from Laravel API
-    axios.get(`${import.meta.env.VITE_API_URL}/banners`)
+    axios.get(`${API_URL}/banners`)
       .then(response => {
         setBanners(response.data);
       })
@@ -84,7 +85,7 @@ const Home = () => {
       });
 
     // Fetch active cards and global titles from Laravel API
-    axios.get(`${import.meta.env.VITE_API_URL}/cards`)
+    axios.get(`${API_URL}/cards`)
       .then(response => {
         setCardsData({
           global_title_en: response.data.global_title_en || 'Open positions',
@@ -97,7 +98,7 @@ const Home = () => {
       });
 
     // Fetch active advantages and global titles from Laravel API
-    axios.get(`${import.meta.env.VITE_API_URL}/advantages`)
+    axios.get(`${API_URL}/advantages`)
       .then(response => {
         setAdvantagesData({
           global_title_en: response.data.global_title_en || 'Charitable contributions',
@@ -110,7 +111,7 @@ const Home = () => {
       });
 
     // Fetch CTA data from Laravel API
-    axios.get(`${import.meta.env.VITE_API_URL}/cta`)
+    axios.get(`${API_URL}/cta`)
       .then(response => {
         setCtaData(response.data);
       })
@@ -174,7 +175,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <img src={`http://localhost:8000/storage/${banner.image_path}`} className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Banner" />
+                  <img src={getStorageUrl(banner.image_path)} className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Banner" />
                 </div>
               ))}
 
@@ -223,7 +224,7 @@ const Home = () => {
                         style={{ width: '40px', height: '40px', overflow: 'hidden' }}
                       >
                         <img 
-                          src={`http://localhost:8000/storage/${card.icon_path}`} 
+                          src={getStorageUrl(card.icon_path)} 
                           alt="Icon" 
                           style={{ 
                             height: '100%', 
@@ -282,7 +283,7 @@ const Home = () => {
                   <div key={adv.id} className="swiper-slide h-100">
                     {adv.image_path && (
                       <img 
-                        src={`http://localhost:8000/storage/${adv.image_path}`} 
+                        src={getStorageUrl(adv.image_path)} 
                         className="w-100 h-100 object-fit-cover" 
                         style={{ objectPosition: 'left center' }}
                         alt="Image" 

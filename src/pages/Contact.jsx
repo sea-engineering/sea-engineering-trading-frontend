@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { API_URL } from '../config/api';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -35,7 +36,7 @@ const Contact = () => {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/contact/settings`)
+    axios.get(`${API_URL}/contact/settings`)
       .then(res => {
         setMapSettings({
           lat: parseFloat(res.data.map_latitude) || 48.8566,
@@ -75,7 +76,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/contact`, {
+      await axios.post(`${API_URL}/contact`, {
         ...formData,
         type: activeTab
       });
