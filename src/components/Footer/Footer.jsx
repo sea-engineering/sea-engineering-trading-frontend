@@ -92,10 +92,10 @@ const Footer = () => {
                         <span className="nav-link d-inline fw-normal p-0"><i className="ci-map-pin me-2"></i>{t('tunis_tunisia')}</span>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="tel:+21612345678"><i className="ci-phone me-2"></i>[Phone Number]</a>
+                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="tel:+21622165066"><i className="ci-phone me-2"></i>+216 22 165 066</a>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="mailto:info@seainternationaltrading.com"><i className="ci-mail me-2"></i>[Email Address]</a>
+                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="mailto:contact@seainternationaltrading.com"><i className="ci-mail me-2"></i>contact@seainternationaltrading.com</a>
                       </li>
                     </ul>
                   </div>
