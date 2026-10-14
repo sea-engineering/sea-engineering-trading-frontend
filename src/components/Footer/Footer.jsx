@@ -64,16 +64,16 @@ const Footer = () => {
                   <div className="accordion-collapse collapse d-sm-block" id="accountLinks" aria-labelledby="accountHeading" data-bs-parent="#footerLinks">
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 mt-n1 mb-1">
                       <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/industrial">{t('industrial_equipment')}</Link>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/industrial-equipment">{t('industrial_equipment')}</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/oilfield">{t('oilfield_equipment')}</Link>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/oilfield-equipment">{t('oilfield_equipment')}</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/general">{t('general_commodities')}</Link>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/general-commodities">{t('general_commodities')}</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/procurement-logistics">{t('procurement_logistics')}</Link>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" to="/products/procurement-logistics">{t('procurement_logistics')}</Link>
                       </li>
                     </ul>
                   </div>
